@@ -1,0 +1,32 @@
+server:
+  port: ${PORT:8190}
+  servlet.context-path: /
+
+spring:
+  jersey:
+    application-path: /rest/
+    type: filter
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+      exposure:
+        include: info, health
+  endpoint:
+    health:
+      enabled: true
+      group.alive.include: ping
+    info:
+      enabled: true
+
+logging.config: classpath:logback-spring-local.xml
+
+gcp:
+  project.id: selsyn-test-us
+  publish.topic:
+    poc: poc-test-topic
+  subscription.id:
+    poc: poc-test-sub
+
